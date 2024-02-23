@@ -28,7 +28,7 @@ export const userApi= createApi({
             return headers;
         }
     }),
-    tagTypes: [""],
+    tagTypes: ["user", "payments"],
     endpoints: (builder) => ({})
 });
 
@@ -45,5 +45,21 @@ export const forumApi= createApi({
         }
     }),
     tagTypes: ["forum"],
+    endpoints: (builder) => ({})
+});
+
+export const basicApi= createApi({
+    reducerPath: "basicApi",
+    baseQuery: fetchBaseQuery({
+        baseUrl: `${import.meta.env.VITE_HOST}/api/basic`,
+        prepareHeaders: (headers, { getState }) => {
+            const token = getState()?.auth?.token?.payload;
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`);
+            }
+            return headers;
+        }
+    }),
+    tagTypes: ["academi"],
     endpoints: (builder) => ({})
 });

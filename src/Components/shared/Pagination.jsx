@@ -22,12 +22,12 @@ const Pagination = ({ count, size, setSize, page, setPage }) => {
   return (
     <div className="flex justify-center my-2">
       <div className="join">
-        <button
+        {/* <button
           onClick={() => setPages((prev) => prev - 1)}
           className="join-item btn"
         >
           «
-        </button>
+        </button> */}
         {[...Array(pages).keys()].map((number) => (
           <button
             onClick={() => setPage(number)}
@@ -40,20 +40,21 @@ const Pagination = ({ count, size, setSize, page, setPage }) => {
           </button>
         ))}
         <button className="join-item btn btn-disabled">...</button>
-        <button
+        {/* <button
           onClick={() => setPages((prev) => prev + 1)}
           className="join-item btn"
         >
           »
-        </button>
+        </button> */}
       </div>
       <select
         onChange={(e) => setSize(e.target.value)}
         className="select select-bordered w-1/4 max-w-xs mx-2"
       >
         <option disabled>Member Counter</option>
-        <option value={1}>1</option>
-        <option value={2}>2</option>
+        <option value={10}>10</option>
+        <option value={20}>20</option>
+        <option value={30}>30</option>
       </select>
     </div>
   );

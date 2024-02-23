@@ -3,10 +3,9 @@ import { useLoggedInUserQuery } from "../../feature/usersApi";
 import Loading from "../../Components/shared/Loading";
 
 const Dashboard = () => {
-  const {data, isLoading} = useLoggedInUserQuery();
-  // console.log(data)
-  if(isLoading){
-    return <Loading />
+  const { data, isLoading } = useLoggedInUserQuery();
+  if (isLoading) {
+    return <Loading />;
   }
   return (
     <div>
@@ -20,7 +19,7 @@ const Dashboard = () => {
         <div className="drawer-content mx-2">
           <Outlet />
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-[100]">
           <label
             htmlFor="dashboard-drawer"
             aria-label="close sidebar"
@@ -31,21 +30,15 @@ const Dashboard = () => {
             <li>
               <Link to="/dashboard">Profile</Link>
             </li>
-           {
-            (data?.role === "general secretary") || (data?.role === "admin secretary") || (data?.role === "president") || (data?.role === "admin") ?  <li>
-            <details close="true">
-              <summary>Admin Panel</summary>
-              <ul>
-                <li>
-                  <Link to="members">Members</Link>
-                </li>
-              </ul>
-            </details>
-          </li>: ""
-           }
             <li>
               <Link to="my-forum">My Forum</Link>
-            </li>            
+            </li>
+            <li>
+              <Link to="my-payment">My Payment</Link>
+            </li>
+            <li>
+              <Link to="change-password">Change Password</Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -8,24 +8,28 @@ const ActiveMember = ({ member }) => {
     },
     {
       id: 2,
-      status: "General Secretary Approval",
+      status: "Finance Secretary Approval",
     },
     {
       id: 3,
-      status: "President Approval",
+      status: "General Secretary Approval",
     },
     {
       id: 4,
+      status: "President Approval",
+    },
+    {
+      id: 5,
       status: "Active",
     },
   ];
   return (
     <div className="flex flex-col items-center">
       <h4 className="text-xl font-bold underline">
-        Activation System for member
+        Activation System Path for member
       </h4>
-      <p>Please Wait till Active Status</p>
-      <ul className="timeline">
+      <p className="my-2">Hello, <span className="text-pink-400 font-semibold">{member?.gender === "male" ? "Mr." : "Mrs."} {member?.name}</span> Please Wait till Active Status</p>
+      {/* <ul className="timeline">
         {membershipTimeline.map((mt, index) => (
           <li key={mt.id}>
             {mt.id > 1 && (
@@ -66,19 +70,61 @@ const ActiveMember = ({ member }) => {
             
           </li>
         ))}
-      </ul>
-      {/* <ul className="steps steps-vertical lg:steps-horizontal">
-        {
-          membershipTimeline.map((mt, index)=><li key={mt.id} className={`step ${mt.id>index+1 && "step-primary"}`}>Register</li>)
-        }
       </ul> */}
-      
-      <p>
-        Your Request is now at{" "}
-        <span className="text-xl text-sky-400">{member?.status}</span>'s table
-      </p>
-      <p>Please be Patient</p>
-      <p>After activation you can access all function of this site</p>
+
+      <ul className="timeline timeline-vertical">
+        {membershipTimeline?.map((mt, index) => (
+          <li key={mt?.id}>
+            {mt?.id % 2 !== 0 ? (
+              <>
+              {mt?.id>1 && <hr/>}
+                <div className="timeline-middle">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div className="timeline-end timeline-box">
+                  {mt?.status}
+                </div>
+                <hr />
+              </>
+            ) : (
+              <>
+                <hr />
+                <div className="timeline-middle">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div className="timeline-end timeline-box">{mt?.status}</div>
+                {mt?.id<membershipTimeline.length && <hr/>}
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <p>Please be Patient.</p>
+      <p>Admins will verify your request shortly and give response very soon</p>
+      <p>After activation you can access all functionality of this site</p>
     </div>
   );
 };

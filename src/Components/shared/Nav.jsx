@@ -1,13 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Smeb from "../../assets/images/smeb.jpeg";
-import Male from "../../assets/images/male.png";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../feature/rootSlice";
+import { useLoggedInUserQuery } from "../../feature/usersApi";
 
 const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const token = localStorage.getItem('authToken');
+  const {data:user} = useLoggedInUserQuery();
   const dispatch = useDispatch();
   const handleLogOut = () =>{
     localStorage.removeItem('authToken');
@@ -16,19 +17,17 @@ const Nav = () => {
   }
   const navLinks = (
     <>
-      <li>
-        <Link to="/#about">About</Link>
-      </li>
+      {/* 
       <li>
         <Link to="/forum">Forum</Link>
-      </li>
+      </li> */}
       {token && (
         <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li className="lg:hidden">
-            <p className="cursor-pointer">Logout</p>
+            <p className="cursor-pointer" onClick={handleLogOut}>Logout</p>
           </li>
         </>
       )}
@@ -37,7 +36,7 @@ const Nav = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className={`dropdown ${!token && "hidden"}`}>
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +55,7 @@ const Nav = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
           </ul>
@@ -81,7 +80,7 @@ const Nav = () => {
             >
               <div className="avatar">
                 <div className="w-10 rounded-full">
-                  <img src={Male} alt="name" />
+                  <img src={user?.photo} alt={user?.name} />
                 </div>
               </div>
             </label>

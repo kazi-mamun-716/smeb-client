@@ -6,7 +6,7 @@ const authApi = rootApi.injectEndpoints({
       query: (data) => ({
         url: "/register",
         method: "POST",
-        body: data,
+        body: data,    
       }),
     }),
     login: builder.mutation({
@@ -16,40 +16,10 @@ const authApi = rootApi.injectEndpoints({
         body: data,
       }),
     }),
-    addMember: builder.mutation({
-      query: (data) => ({
-        url: "/addMember",
-        method: "POST",
-        body: data,
-      }),
-    }),
-    allMember: builder.query({
-      query: ({page, size})=>`/members?page=${page}&size=${size}`,
-      providesTags: ['member']
-    }),
-    approveMember: builder.mutation({
-      query: ({id, data}) =>({
-        url: `/approveMember?id=${id}`,
-        method: 'PUT',
-        body: data
-      }),
-      invalidatesTags: ["member"]
-    }),
-    deletMember: builder.mutation({
-      query: (id)=>({
-        url: `/${id}`,
-        method: "DELETE"
-      }),
-      invalidatesTags: ["member"]
-    })
   }),
 });
 
 export const { 
   useRegisterMutation, 
-  useLoginMutation,
-  useAddMemberMutation,
-  useAllMemberQuery,
-  useApproveMemberMutation,
-  useDeletMemberMutation
+  useLoginMutation
 } = authApi;

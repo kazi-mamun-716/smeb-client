@@ -6,12 +6,14 @@ import Loading from "../../Components/shared/Loading";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../feature/rootSlice";
 import {toast} from "react-toastify";
+import ForgotPassword from "../../Components/Modals/ForgotPassword";
 
 const Login = () => {
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
   });
+  const [isForgot, setForgot] = useState(false);
   const token = localStorage.getItem("authToken");
   const [userLogin, { data, isLoading, isError, error, isSuccess }] =
     useLoginMutation();
@@ -92,8 +94,11 @@ const Login = () => {
             Register Here
           </Link>
         </p>
-        <p className="cursor-pointer hover:underline">Forgot Password</p>
+        <label onClick={()=>setForgot(true)} htmlFor="forgot_pass_modal" className="cursor-pointer hover:underline hover:text-sky-400">Forgot Password</label>
       </div>
+      {
+        isForgot && <ForgotPassword setForgot={setForgot}/>
+      }
     </div>
   );
 };
