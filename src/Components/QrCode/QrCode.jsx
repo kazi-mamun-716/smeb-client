@@ -6,6 +6,7 @@ const QrCode = ({ user }) => {
         Name: ${user?.name}
         Mobile: ${user?.mobile}
         SMEB ID: ${user?.smebId}
+        Profile Link: https://smeb.online/profile/${user?._id}
     `;
   useEffect(() => {
     QRCode.toDataURL(

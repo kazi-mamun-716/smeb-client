@@ -6,6 +6,9 @@ const usersApi = userApi.injectEndpoints({
       query: () => "/loggedInUser",
       providesTags: ["user"]
     }),
+    singleUser:builder.query({
+      query: (id)=>`singleUser/${id}`
+    }),
     emailVerification: builder.mutation({
       query: (data) => ({
         url: "/emailVerification",
@@ -75,6 +78,7 @@ const usersApi = userApi.injectEndpoints({
 
 export const {
   useLoggedInUserQuery,
+  useSingleUserQuery,
   useEmailVerificationMutation,
   useUploadDocMutation,
   usePassChangeMutation,

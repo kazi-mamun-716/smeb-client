@@ -7,29 +7,45 @@ import { useLoggedInUserQuery } from "../../feature/usersApi";
 const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const token = localStorage.getItem('authToken');
-  const {data:user} = useLoggedInUserQuery();
+  const token = localStorage.getItem("authToken");
+  const { data: user } = useLoggedInUserQuery();
   const dispatch = useDispatch();
-  const handleLogOut = () =>{
-    localStorage.removeItem('authToken');
-    navigate('/login')
+  const handleLogOut = () => {
+    localStorage.removeItem("authToken");
+    navigate("/login");
     dispatch(setToken(null));
-  }
+  };
   const navLinks = (
     <>
-      {/* 
+      {token && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
+      <li>
+        <Link to="/ec">Executive Committee</Link>
+      </li>
       <li>
         <Link to="/forum">Forum</Link>
-      </li> */}
+      </li>
+      <li>
+        <Link to="/blog">Blog</Link>
+      </li>
+      <li>
+        <Link to="/notice">Notice</Link>
+      </li>
+      <li>
+        <Link to="/contact">Contact Us</Link>
+      </li>
+      <li>
+        <Link to="/about">About Us</Link>
+      </li>
       {token && (
-        <>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li className="lg:hidden">
-            <p className="cursor-pointer" onClick={handleLogOut}>Logout</p>
-          </li>
-        </>
+        <li className="lg:hidden">
+          <p className="cursor-pointer" onClick={handleLogOut}>
+            Logout
+          </p>
+        </li>
       )}
     </>
   );
@@ -70,7 +86,12 @@ const Nav = () => {
       <div className="navbar-end">
         {token ? (
           <div className="dropdown">
-            <button onClick={handleLogOut} className="btn btn-sm btn-outline btn-warning hidden lg:block">Logout</button>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm btn-outline btn-warning hidden lg:block"
+            >
+              Logout
+            </button>
             <label
               tabIndex={0}
               htmlFor="dashboard-drawer"

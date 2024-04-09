@@ -35,6 +35,7 @@ const DocumentUpload = () => {
       toast.error(error?.data?.message);
     }
   }, [isSuccess, isError]);
+
   if (isLoading) {
     return <Loading />;
   }

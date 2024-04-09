@@ -34,7 +34,19 @@ const Dashboard = () => {
               <Link to="my-forum">My Forum</Link>
             </li>
             <li>
+              <Link to="my-blog">My Blog</Link>
+            </li>
+            <li>
               <Link to="my-payment">My Payment</Link>
+            </li>
+            <li>
+              <Link to="members">All Member</Link>
+            </li>
+            <li>
+              <Link to="search-member">Search Member</Link>
+            </li>
+            <li>
+              <Link to="jobs">Jobs</Link>
             </li>
             <li>
               <Link to="change-password">Change Password</Link>
