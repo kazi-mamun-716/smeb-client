@@ -3,7 +3,7 @@ import React from 'react'
 const MyBlog = () => {
   return (
     <div>
-      My Blog
+      My Blog page under construction
     </div>
   )
 }

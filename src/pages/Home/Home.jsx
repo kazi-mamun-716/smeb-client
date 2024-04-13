@@ -10,13 +10,7 @@ const Home = () => {
         <img src={Smeb} alt="smeb" className="rounded " title="Society of Marine Engineers, Bangladesh"/>
       </div>
       <h1 className="text-xl">সোসাইটি অব মেরিন ইন্জিনিয়ার্স, বাংলাদেশ।</h1>
-      <h1 className="text-xl animate-bounce ">Society of Marine Engineers, Bangladesh</h1>
-      <p >This website is under construction.</p>
-      <p>
-        Please feel free to send your queries or suggestion by
-      </p>
-      <p>WhatsApp message to +880 1710202031</p>
-      <p>Thank you for your patience.</p>
+      <h1 className="text-xl animate-bounce ">Society of Marine Engineers, Bangladesh</h1>      
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react'
 const Notice = () => {
   return (
     <div>
-      Notice
+      Notice page under construction
     </div>
   )
 }

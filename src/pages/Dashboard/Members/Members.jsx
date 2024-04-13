@@ -3,7 +3,7 @@ import React from 'react'
 const Members = () => {
   return (
     <div>
-      members
+      members page under construction
     </div>
   )
 }

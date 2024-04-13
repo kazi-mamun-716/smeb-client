@@ -23,22 +23,55 @@ const Nav = () => {
         </li>
       )}
       <li>
+        <Link to="/about">About Us</Link>
+      </li>
+      <li>
+        <Link to="/history">History</Link>
+      </li>
+      <li>
         <Link to="/ec">Executive Committee</Link>
       </li>
       <li>
-        <Link to="/forum">Forum</Link>
+        <Link to="/dashboard/members">Members</Link>
       </li>
       <li>
-        <Link to="/blog">Blog</Link>
+        <Link to="/discussion">Discussion</Link>
       </li>
       <li>
-        <Link to="/notice">Notice</Link>
+        <Link to="/employers">Employers</Link>
+      </li>
+      <li className="lg:hidden">
+        <a>Pages</a>
+        <ul className="p-2">
+          <li>
+            <Link to="/jobs">Jobs</Link>
+          </li>
+          <li>
+            <Link to="/gallery">Photo Gallery</Link>
+          </li>
+          <li>
+            <Link to="/publication">Publication & Research</Link>
+          </li>
+        </ul>
+      </li>
+      <li className="hidden lg:block">
+        <details>
+          <summary>More</summary>
+          <ul className="p-2">
+          <li>
+            <Link to="/jobs">Jobs</Link>
+          </li>
+          <li>
+            <Link to="/gallery">Photo Gallery</Link>
+          </li>
+          <li>
+            <Link to="/publication">Publication & Research</Link>
+          </li>
+        </ul>
+        </details>
       </li>
       <li>
         <Link to="/contact">Contact Us</Link>
-      </li>
-      <li>
-        <Link to="/about">About Us</Link>
       </li>
       {token && (
         <li className="lg:hidden">
@@ -52,7 +85,7 @@ const Nav = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <div className={`dropdown ${!token && "hidden"}`}>
+        <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"

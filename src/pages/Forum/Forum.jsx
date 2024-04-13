@@ -3,7 +3,7 @@ import React from "react";
 const Forum = () => {
   return (
     <div>
-      Forum
+      Forum page under construction
     </div>
   );
 };

@@ -30,8 +30,12 @@ import Blog from "./pages/GeneralPages/Blog/Blog";
 import Notice from "./pages/GeneralPages/Notice/Notice";
 import Contact from "./pages/GeneralPages/Contact/Contact";
 import About from "./pages/GeneralPages/About/About";
-import Jobs from "./pages/Dashboard/Jobs/Jobs";
+import Jobs from "./pages/GeneralPages/Jobs/Jobs";
 import MyBlog from "./pages/Dashboard/MyBlog/MyBlog";
+import History from "./pages/GeneralPages/History/History";
+import Employers from "./pages/GeneralPages/Employers/Employers";
+import Gallery from "./pages/GeneralPages/Gallery/Gallery";
+import Publication from "./Components/Publication/Publication";
 
 function App() {
   const token = localStorage.getItem("authToken");
@@ -46,10 +50,15 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Registration />} />
         <Route path="ec" element={<ExecutiveCommittee />} />
-        <Route path="blog" element={<Blog />} />
+        <Route path="discussion" element={<Blog />} />
+        <Route path="gallery" element={<Gallery />} />
+        <Route path="publication" element={<Publication />} />
         <Route path="notice" element={<Notice />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
+        <Route path="jobs" element={<Jobs />} />
+        <Route path="history" element={<History />} />
+        <Route path="employers" element={<Employers />} />
         <Route path="forgotPass/:id" element={<ForgetPassword />} />
         <Route path="profile/:id" element={<SIngleUser />} />
         <Route path="forum" element={<Forum />}>
@@ -62,7 +71,6 @@ function App() {
             <Route path="my-blog" element={<MyBlog />} />
             <Route path="my-payment" element={<MyPayment />} />
             <Route path="members" element={<Members />} />
-            <Route path="jobs" element={<Jobs />} />
             <Route path="search-member" element={<SearchUser />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>

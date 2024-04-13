@@ -46,9 +46,6 @@ const Dashboard = () => {
               <Link to="search-member">Search Member</Link>
             </li>
             <li>
-              <Link to="jobs">Jobs</Link>
-            </li>
-            <li>
               <Link to="change-password">Change Password</Link>
             </li>
           </ul>
