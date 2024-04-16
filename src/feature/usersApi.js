@@ -4,10 +4,17 @@ const usersApi = userApi.injectEndpoints({
   endpoints: (builder) => ({
     loggedInUser: builder.query({
       query: () => "/loggedInUser",
-      providesTags: ["user"]
+      providesTags: ["user"],
     }),
-    singleUser:builder.query({
-      query: (id)=>`singleUser/${id}`
+    singleUser: builder.query({
+      query: (id) => `singleUser/${id}`,
+    }),
+    getAllMember: builder.query({
+      query: ({ page, size, filter }) =>
+        `/members?page=${page}&size=${size}&filter=${filter}`,
+    }),
+    countMember: builder.query({
+      query: (filter) => `/count?filter=active`,
     }),
     emailVerification: builder.mutation({
       query: (data) => ({
@@ -15,70 +22,72 @@ const usersApi = userApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["user"]
+      invalidatesTags: ["user"],
     }),
     uploadDoc: builder.mutation({
-      query: (data)=>({
+      query: (data) => ({
         url: "/uploadDoc",
         method: "PUT",
-        body: data
+        body: data,
       }),
-      invalidatesTags: ["user"]
+      invalidatesTags: ["user"],
     }),
     verifyVCode: builder.mutation({
-      query: (data)=>({
+      query: (data) => ({
         url: "/verifyVCode",
         method: "POST",
-        body: data
+        body: data,
       }),
-      invalidatesTags: ["user"]
+      invalidatesTags: ["user"],
     }),
     passChange: builder.mutation({
-      query: (data)=>({
+      query: (data) => ({
         url: "/changePassword",
         method: "PUT",
-        body: data
-      })
+        body: data,
+      }),
     }),
     forgotPass: builder.mutation({
-      query: (data)=>({
+      query: (data) => ({
         url: "/forgotPass",
         method: "POST",
-        body: data
-      })
+        body: data,
+      }),
     }),
     passReset: builder.mutation({
-      query: (data)=>({
+      query: (data) => ({
         url: `/resetPass`,
         method: "PUT",
-        body: data
-      })
+        body: data,
+      }),
     }),
     paymentRequest: builder.mutation({
-      query: (data)=>({
-        url: '/makePaymentRequest',
+      query: (data) => ({
+        url: "/makePaymentRequest",
         method: "POST",
-        body: data
+        body: data,
       }),
-      invalidatesTags: ["payments"]
+      invalidatesTags: ["payments"],
     }),
     payments: builder.query({
-      query: ()=>"/myPayments",
-      providesTags: ["payments"]
+      query: () => "/myPayments",
+      providesTags: ["payments"],
     }),
     deletePaymentReq: builder.mutation({
-      query: (id)=>({
+      query: (id) => ({
         url: `/payment/${id}`,
-        method: "DELETE"
+        method: "DELETE",
       }),
-      invalidatesTags: ["payments"]
-    })
-  })
+      invalidatesTags: ["payments"],
+    }),
+  }),
 });
 
 export const {
   useLoggedInUserQuery,
   useSingleUserQuery,
+  useGetAllMemberQuery,
+  useCountMemberQuery,
   useEmailVerificationMutation,
   useUploadDocMutation,
   usePassChangeMutation,
@@ -87,5 +96,5 @@ export const {
   useVerifyVCodeMutation,
   usePaymentRequestMutation,
   usePaymentsQuery,
-  useDeletePaymentReqMutation
+  useDeletePaymentReqMutation,
 } = usersApi;

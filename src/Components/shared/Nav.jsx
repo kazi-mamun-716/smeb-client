@@ -41,33 +41,28 @@ const Nav = () => {
         <Link to="/employers">Employers</Link>
       </li>
       <li className="lg:hidden">
-        <a>Pages</a>
-        <ul className="p-2">
-          <li>
-            <Link to="/jobs">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/gallery">Photo Gallery</Link>
-          </li>
-          <li>
-            <Link to="/publication">Publication & Research</Link>
-          </li>
-        </ul>
+        <Link to="/jobs">Jobs</Link>
+      </li>
+      <li className="lg:hidden">
+        <Link to="/gallery">Photo Gallery</Link>
+      </li>
+      <li className="lg:hidden">
+        <Link to="/publication">Publication & Research</Link>
       </li>
       <li className="hidden lg:block">
         <details>
           <summary>More</summary>
           <ul className="p-2">
-          <li>
-            <Link to="/jobs">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/gallery">Photo Gallery</Link>
-          </li>
-          <li>
-            <Link to="/publication">Publication & Research</Link>
-          </li>
-        </ul>
+            <li>
+              <Link to="/jobs">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/gallery">Photo Gallery</Link>
+            </li>
+            <li>
+              <Link to="/publication">Publication & Research</Link>
+            </li>
+          </ul>
         </details>
       </li>
       <li>
