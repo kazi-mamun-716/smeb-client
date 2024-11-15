@@ -63,3 +63,18 @@ export const basicApi= createApi({
     tagTypes: ["academi"],
     endpoints: (builder) => ({})
 });
+export const eventApi= createApi({
+    reducerPath: "eventApi",
+    baseQuery: fetchBaseQuery({
+        baseUrl: `${import.meta.env.VITE_HOST}/api/event`,
+        prepareHeaders: (headers, { getState }) => {
+            const token = getState()?.auth?.token?.payload;
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`);
+            }
+            return headers;
+        }
+    }),
+    tagTypes: ["event"],
+    endpoints: (builder) => ({})
+});

@@ -36,7 +36,7 @@ const EmailVerification = ({ user }) => {
       console.log(error)
       toast.error(error?.data?.message)
     }
-  },[verifySuccess, isError])
+  },[verifySuccess, isError, error])
   useEffect(() => {
     if (isSuccess) {
       setSendSuccess(true);
@@ -48,7 +48,7 @@ const EmailVerification = ({ user }) => {
         sessionStorage.setItem("verificationCode", data?.code);
       }
     }
-  }, [isSuccess]);
+  }, [isSuccess, data?.code]);
   if (isLoading || verifyVCodeLoading) {
     return <Loading />;
   }
@@ -57,7 +57,7 @@ const EmailVerification = ({ user }) => {
       <form onSubmit={handleSubmit}>
         <label className="form-control w-full max-w-xs">
           <div className="label">
-            <span className="label-text">What is your name?</span>
+            <span className="label-text">Verification Code</span>
           </div>
           <input
             type="number"
@@ -72,18 +72,18 @@ const EmailVerification = ({ user }) => {
           <input
             type="submit"
             value="Submit"
-            className="btn btn-outline my-2"
+            className="btn btn-info my-2"
           />
         </label>
       </form>
       {sendSuccess ? (
         <div>
-          <p>Email Send Successfull</p>
+          <p>Email sent successfull</p>
           <p>Please check your inbox or spam folder.</p>
         </div>
       ) : (
         <div>
-          <p>We have send verification Link on your Email.</p>
+          <p>We have sent verification code on your Email.</p>
           <p>Please check your inbox or spam and Verify First.</p>
           <p>
             Not find any Email?{" "}

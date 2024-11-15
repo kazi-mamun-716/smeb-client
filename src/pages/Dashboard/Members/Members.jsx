@@ -22,7 +22,7 @@ const Members = () => {
     if (isError) {
       console.log(error);
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, error]);
   if (isLoading || countLoading) {
     return <Loading />;
   }

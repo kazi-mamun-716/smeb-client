@@ -82,7 +82,7 @@ const Login = () => {
           <input
             type="submit"
             value="Login"
-            className="btn btn-success btn-sm"
+            className="btn btn-info btn-sm"
             disabled={!inputData.email || !inputData.password}
           />
         </div>

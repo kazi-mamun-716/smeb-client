@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Smeb from "../../assets/images/smeb.jpeg";
+import Smeb from "../../assets/images/smeb.png";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../feature/rootSlice";
 import { useLoggedInUserQuery } from "../../feature/usersApi";
@@ -23,12 +23,6 @@ const Nav = () => {
         </li>
       )}
       <li>
-        <Link to="/about">About Us</Link>
-      </li>
-      <li>
-        <Link to="/history">History</Link>
-      </li>
-      <li>
         <Link to="/ec">Executive Committee</Link>
       </li>
       <li>
@@ -36,6 +30,9 @@ const Nav = () => {
       </li>
       <li>
         <Link to="/discussion">Discussion</Link>
+      </li>
+      <li>
+        <Link to="/events">Events</Link>
       </li>
       <li>
         <Link to="/employers">Employers</Link>
@@ -46,9 +43,6 @@ const Nav = () => {
       <li className="lg:hidden">
         <Link to="/gallery">Photo Gallery</Link>
       </li>
-      <li className="lg:hidden">
-        <Link to="/publication">Publication & Research</Link>
-      </li>
       <li className="hidden lg:block">
         <details>
           <summary>More</summary>
@@ -58,9 +52,6 @@ const Nav = () => {
             </li>
             <li>
               <Link to="/gallery">Photo Gallery</Link>
-            </li>
-            <li>
-              <Link to="/publication">Publication & Research</Link>
             </li>
           </ul>
         </details>
@@ -78,7 +69,7 @@ const Nav = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-[url('/nav-bg.png')] lg:mt-2 rounded">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -105,7 +96,7 @@ const Nav = () => {
           </ul>
         </div>
         <Link to="/">
-          <img src={Smeb} width={35} className="rounded" alt="SMEB" />
+          <img src={Smeb} width={45} className="rounded" alt="SMEB" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -116,9 +107,9 @@ const Nav = () => {
           <div className="dropdown">
             <button
               onClick={handleLogOut}
-              className="btn btn-sm btn-outline btn-warning hidden lg:block"
+              className="btn btn-sm btn-outline btn-warning hidden lg:block "
             >
-              Logout
+               <span className="text-red-700">Logout</span>
             </button>
             <label
               tabIndex={0}
@@ -135,7 +126,7 @@ const Nav = () => {
             </label>
           </div>
         ) : (
-          <Link to="/login" className="btn btn-sm btn-outline btn-info">
+          <Link to="/login" className="btn btn-sm btn-info">
             Login
           </Link>
         )}

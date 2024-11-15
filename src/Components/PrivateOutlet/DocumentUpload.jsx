@@ -34,7 +34,7 @@ const DocumentUpload = () => {
       console.log(error);
       toast.error(error?.data?.message);
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, error]);
 
   if (isLoading) {
     return <Loading />;
@@ -47,6 +47,7 @@ const DocumentUpload = () => {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Profile Picture</span>
+              <span className="label-text-alt">maximum 1 mb</span>
             </div>
             <input
               type="file"

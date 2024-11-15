@@ -16,14 +16,11 @@ import PrivateOutlet from "./Components/PrivateOutlet/PrivateOutlet";
 import { useDispatch } from "react-redux";
 import { setToken } from "./feature/rootSlice";
 import { ToastContainer } from "react-toastify";
-import Forum from "./pages/Forum/Forum";
-import SingleForum from "./pages/Forum/SingleForum";
 import MyForum from "./pages/Dashboard/MyForum/MyForum";
 import MyPayment from "./pages/Dashboard/MyPayment/MyPayment";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import ChangePassword from "./pages/Dashboard/ChangePassword/ChangePassword";
 import SIngleUser from "./pages/SingleUser/SIngleUser";
-import SearchUser from "./pages/Dashboard/SearchUser/SearchUser";
 import Members from "./pages/Dashboard/Members/Members";
 import ExecutiveCommittee from "./pages/GeneralPages/ExecutiveCommittee/ExecutiveCommittee";
 import Blog from "./pages/GeneralPages/Blog/Blog";
@@ -36,6 +33,12 @@ import History from "./pages/GeneralPages/History/History";
 import Employers from "./pages/GeneralPages/Employers/Employers";
 import Gallery from "./pages/GeneralPages/Gallery/Gallery";
 import Publication from "./Components/Publication/Publication";
+import Discussion from "./pages/GeneralPages/Discussion/Discussion";
+import CreateDiscussion from "./pages/GeneralPages/Discussion/Create/CreateDiscussion";
+import SingleDiscussion from "./pages/GeneralPages/Discussion/SingleDiscussion/SingleDiscussion";
+import EditDiscussion from "./pages/GeneralPages/Discussion/Edit/EditDiscussion";
+import Events from "./pages/Events/Events";
+import SingleEvent from "./pages/Events/SingleEvent";
 
 function App() {
   const token = localStorage.getItem("authToken");
@@ -50,7 +53,6 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Registration />} />
         <Route path="ec" element={<ExecutiveCommittee />} />
-        <Route path="discussion" element={<Blog />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path="publication" element={<Publication />} />
         <Route path="notice" element={<Notice />} />
@@ -61,17 +63,19 @@ function App() {
         <Route path="employers" element={<Employers />} />
         <Route path="forgotPass/:id" element={<ForgetPassword />} />
         <Route path="profile/:id" element={<SIngleUser />} />
-        <Route path="forum" element={<Forum />}>
-          <Route path=":id" element={<SingleForum />} />
-        </Route>
+        <Route path="discussion" element={<Discussion />} />
+        <Route path="discussion/:id" element={<SingleDiscussion />} />
+        <Route path="events" element={<Events/>}/>
+        <Route path="events/:id" element={<SingleEvent/>}/>
         <Route path="/*" element={<PrivateOutlet />}>
+          <Route path="discussion/create" element={<CreateDiscussion />} />
+          <Route path="discussion/:id/edit" element={<EditDiscussion />} />
           <Route path="dashboard" element={<Dashboard />}>
             <Route index element={<Profile />} />
-            <Route path="my-forum" element={<MyForum />} />
+            <Route path="my-discussion" element={<MyForum />} />
             <Route path="my-blog" element={<MyBlog />} />
             <Route path="my-payment" element={<MyPayment />} />
             <Route path="members" element={<Members />} />
-            <Route path="search-member" element={<SearchUser />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>
           <Route path="payment" element={<Payment />} />

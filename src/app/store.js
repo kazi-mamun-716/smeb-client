@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { basicApi, forumApi, rootApi, userApi } from '../feature/apiSlice'
+import { basicApi, eventApi, forumApi, rootApi, userApi } from '../feature/apiSlice'
 import rootSlice from '../feature/rootSlice';
 
 const store = configureStore({
@@ -8,6 +8,7 @@ const store = configureStore({
         [userApi.reducerPath]: userApi.reducer,
         [forumApi.reducerPath]: forumApi.reducer,
         [basicApi.reducerPath]: basicApi.reducer,
+        [eventApi.reducerPath]: eventApi.reducer,
         auth: rootSlice // for set header 
     },
     middleware: (getDefaultMiddleware)=>getDefaultMiddleware()
@@ -15,6 +16,7 @@ const store = configureStore({
                                             .concat(userApi.middleware)
                                             .concat(forumApi.middleware)
                                             .concat(basicApi.middleware)
+                                            .concat(eventApi.middleware)
 })
 
 export default store;
