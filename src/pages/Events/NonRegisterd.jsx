@@ -11,20 +11,19 @@ function NonRegisterd({
   data
 }) {
   const [isMarinner, setIsMarinner] = useState(true);
-  const [isOpenModal, setOpenModal] = useState(null)
+  const [isOpenModal, setOpenModal] = useState(false)
+  const [userData, setUserData] = useState({})
   const [email, setEmail] = useState("");  
-  const [checkData,{isLoading, isSuccess, data:dataByEmail}] = useCheckNonRegisterParticipationMutation();
+  const [checkData,{isSuccess, data:dataByEmail}] = useCheckNonRegisterParticipationMutation();
   const handleClick=()=>{
     checkData({email, id: data?._id})
+    setOpenModal(true)
   }
   useEffect(()=>{    
     if(isSuccess){
-      setOpenModal(dataByEmail)
+      setUserData(dataByEmail)
     }
   },[dataByEmail, isSuccess])
-  if(isLoading){
-    return <Loading />
-  }
   return (
     <div>
       <div className="flex gap-2 my-2">
@@ -203,7 +202,7 @@ function NonRegisterd({
         />
       </form>
       {
-        isOpenModal !== null && isSuccess && <EmailCheckingModal data={isOpenModal} setOpenModal={setOpenModal} />
+        isOpenModal && <EmailCheckingModal data={userData} setOpenModal={setOpenModal} />
       }
     </div>
   );
